@@ -1,3 +1,12 @@
-# First Chapter
+# Sections
 
-GitBook allows you to organize your book into chapters, each chapter is stored in a separate file like this one.
+* Statement of Work
+* Technical Architecture
+* Deployment
+* Minions
+* Plug-Ins
+* Price Books
+* Inventory
+
+
+
