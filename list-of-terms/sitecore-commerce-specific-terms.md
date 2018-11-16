@@ -1,3 +1,7 @@
+_**WARNING: This book has moved to **_[_**Sitecore Commerce Cookbook**_](https://sitecorecommerceguild.gitbook.io/sitecore-commerce-cookbook/)_** and will not be maintained here**_
+
+
+
 These are terms specific to Sitecore Experience Commerce such as Minions, Commerce Engine, Commerce Business Tools, etc.
 
 Commerce Business Tools: The Commerce Business Tools are a set of rich business tools for merchandisers and customer service representatives. The business tools are built on the Angular framework.
@@ -50,121 +54,105 @@ Caching:
 
 Plugins:
 
-
-
 SXA Storefront: The Sitecore Experience Accelerator \(SXA\) Storefront is a sample storefront website that is integrated with the Commerce Engine.
 
+Component: Basic structure for supporting compositional extensibility, including the component class and various base components.
 
+Context: A call-level context called CommerceContext, which is initialized when a call enters the service and is carried throughout the service call. The CommerceContext provides an object cache, messaging, headers, and other core call-level information.
 
- Component: Basic structure for supporting compositional extensibility, including the component class and various base components. 
+Controller: Basic controllers that make core functionality available through the Service API.
 
- Context: A call-level context called CommerceContext, which is initialized when a call enters the service and is carried throughout the service call. The CommerceContext provides an object cache, messaging, headers, and other core call-level information. 
+Converter : Custom JSON converters for the Service API.
 
- Controller: Basic controllers that make core functionality available through the Service API. 
+Entity: Commands, policies, and pipelines to support reading and writing commerce entities. A CommerceEntity is a core artifact designed to directly represent a business concept, which is stored as a single unit in a persistent storage. Entities have identifiers and can be retrieved through the Service API.
 
- Converter : Custom JSON converters for the Service API. 
+Environment: Commerce environments provide the ability to have separately configurable pools of data and service functionality that run together in a single-service instance. Environments can share the same persistent store as other environments or be separated into their own exclusive persistent store.
 
- Entity: Commands, policies, and pipelines to support reading and writing commerce entities. A CommerceEntity is a core artifact designed to directly represent a business concept, which is stored as a single unit in a persistent storage. Entities have identifiers and can be retrieved through the Service API. 
+Event: Basic infrastructure to support events and event-driven actions.
 
- Environment: Commerce environments provide the ability to have separately configurable pools of data and service functionality that run together in a single-service instance. Environments can share the same persistent store as other environments or be separated into their own exclusive persistent store. 
+Exception: Basic CommerceException base class.
 
- Event: Basic infrastructure to support events and event-driven actions. 
+Globalization: Commands and their pipelines to support globalization, including support for multicurrency and localization.
 
- Exception: Basic CommerceException base class. 
+List: Commands and pipelines to support basic list functionality, including basic list management. Use ManagedLists to track lists of entities either based on their state or based on activities that need to be performed on them. Lists are used to provide organizational structure and to support business processes.
 
- Globalization: Commands and their pipelines to support globalization, including support for multicurrency and localization. 
+Location: Commands and pipelines to support locations, for example, retrieving supported countries and country information.
 
- List: Commands and pipelines to support basic list functionality, including basic list management. Use ManagedLists to track lists of entities either based on their state or based on activities that need to be performed on them. Lists are used to provide organizational structure and to support business processes. 
+Logging: Support for core logging using SeriLog and to specify logging using Microsoft Application Insights.
 
- Location: Commands and pipelines to support locations, for example, retrieving supported countries and country information. 
+Media: Core classes to support media types and policies, including a GlobalImagePolicy and an image class.
 
- Logging: Support for core logging using SeriLog and to specify logging using Microsoft Application Insights. 
+Minion: Commands and pipelines to support minions including the MinionBoss and RunMinion pipelines, and the policies to support configuring minions in the environment configuration.
 
- Media: Core classes to support media types and policies, including a GlobalImagePolicy and an image class. 
+Model: Basic core models, which are POCO classes that are reusable inside entities and components. Models can be used to present data as part of a command response, in the models collection. Models are listed in the Sitecore.Commerce.Documentation.chm \(in the SDK folder\) on the Model Class page.
 
- Minion: Commands and pipelines to support minions including the MinionBoss and RunMinion pipelines, and the policies to support configuring minions in the environment configuration. 
+Node: A node is a running instance of the Service API. Core pipelines, blocks, and policies that enable basic node functionality.
 
- Model: Basic core models, which are POCO classes that are reusable inside entities and components. Models can be used to present data as part of a command response, in the models collection. Models are listed in the Sitecore.Commerce.Documentation.chm \(in the SDK folder\) on the Model Class page. 
+Performance: Commands and policies to support tracking and integrating with performance counters for commands.
 
- Node: A node is a running instance of the Service API. Core pipelines, blocks, and policies that enable basic node functionality. 
+Pipeline: Core commands and models to support pipeline functionality. Pipelines, in turn, leverage the Sitecore.Framework.Pipelines infrastructure.
 
- Performance: Commands and policies to support tracking and integrating with performance counters for commands. 
+Plugin: Core support for the Commerce pluggable extensibility.
 
- Pipeline: Core commands and models to support pipeline functionality. Pipelines, in turn, leverage the Sitecore.Framework.Pipelines infrastructure. 
+Policy: A named, versionable and variable set of data that can be used as facts within behaviors to influence behavioral outcomes. This provides an auditable mechanism for viewing, simulating, and changing core decision criteria that might be used by business processes or other policy-driven behavior. Various plugins have specialized policies to add additional facts to existing policies and/or new policies, or to implement new concepts, such as dynamic pricing.
 
- Plugin: Core support for the Commerce pluggable extensibility. 
+```
+Worker processes only need a link to the policy store to bootstrap.  Single point of truth for policies.  Publish workflow without moving data.  Policies are heavily cached and rarely change.  Policies can have attached rules to deliver personalized policies. 
 
- Policy: A named, versionable and variable set of data that can be used as facts within behaviors to influence behavioral outcomes. This provides an auditable mechanism for viewing, simulating, and changing core decision criteria that might be used by business processes or other policy-driven behavior. Various plugins have specialized policies to add additional facts to existing policies and/or new policies, or to implement new concepts, such as dynamic pricing.  
+Policies are listed in the Sitecore.Commerce.Documentation.chm \(in the SDK folder\) on the Policy Class page. 
+```
 
-	Worker processes only need a link to the policy store to bootstrap.  Single point of truth for policies.  Publish workflow without moving data.  Policies are heavily cached and rarely change.  Policies can have attached rules to deliver personalized policies. 
+Policy characteristics include:  Centralized policy store using abstract entity storage.
 
-	Policies are listed in the Sitecore.Commerce.Documentation.chm \(in the SDK folder\) on the Policy Class page. 
+Provider: Core interfaces for an EntityProvider and an IndexProvider. The concept of a provider is avoided because any plugin could potentially be a provider. This is only used by the FileSystemProvider, which enables reading a CommerceEntity from the file system.
 
-Policy characteristics include:  Centralized policy store using abstract entity storage. 
+ServiceApi: Core models and policies to enable the basic Service API.
 
+Transaction: Core functionality to support transactionality in the solution.
 
-
-Provider: Core interfaces for an EntityProvider and an IndexProvider. The concept of a provider is avoided because any plugin could potentially be a provider. This is only used by the FileSystemProvider, which enables reading a CommerceEntity from the file system. 
-
-ServiceApi: Core models and policies to enable the basic Service API. 
-
-Transaction: Core functionality to support transactionality in the solution. 
-
- 
-
- Commerce Entity Store: A Commerce EntityStore is an abstract mechanism for specifying the persistence and retrieval of Commerce entities. The EntityStore provides a customization point that allows you to customize where and how entities are persisted. Sitecore XC uses an SQL-based EntityStore. 
+Commerce Entity Store: A Commerce EntityStore is an abstract mechanism for specifying the persistence and retrieval of Commerce entities. The EntityStore provides a customization point that allows you to customize where and how entities are persisted. Sitecore XC uses an SQL-based EntityStore.
 
 A Commerce EntityStore is policy-driven and leverages plugins for persistence
 
+commerce entity \(entity\): A commerce entity represents a core unit of persistence in the form of a POCO class that inherits from commerce entity and can extend the entity along with behavior defined based on lifecycle events of the entity or defined commands.
+
+```
+Commerce entities are designed to be serialized rapidly into JSON and stored in a variety of persistent stores. 
 
 
 
+Namespace: The first part of the entity’s unique identifier \(string\). 
 
-commerce entity \(entity\): A commerce entity represents a core unit of persistence in the form of a POCO class that inherits from commerce entity and can extend the entity along with behavior defined based on lifecycle events of the entity or defined commands. 
+Id : Its unique identifier \(string\). 
 
-	Commerce entities are designed to be serialized rapidly into JSON and stored in a variety of persistent stores. 
+Name : Name of the entity \(string\). 
 
+FriendlyId: Human readable instance of the unique identifier \(string\). 
 
+DisplayName : Displayable name of the entity \(Localized&lt;String&gt;\). 
 
-	Namespace: The first part of the entity’s unique identifier \(string\). 
+DateCreated: Date and time the entity was created, automatically updated \(DateTime\). 
 
-	Id : Its unique identifier \(string\). 
+Description: Description of entity \(Localized&lt;String&gt;\). 
 
-	Name : Name of the entity \(string\). 
+DateUpdated: Date and time the entity was updated, automatically updated \(DateTime\). 
 
-	FriendlyId: Human readable instance of the unique identifier \(string\). 
+Policies: List of policies applicable to this entity \(List&lt;Policy\). 
 
-	DisplayName : Displayable name of the entity \(Localized&lt;String&gt;\). 
+Components: List of components applicable to this entity \(List&lt;Component&gt;\). 
 
-	DateCreated: Date and time the entity was created, automatically updated \(DateTime\). 
+ListMemberships: Delimited list of lists names \(string\). 
 
-	Description: Description of entity \(Localized&lt;String&gt;\). 
+SortOrder: The order this item is sorted \(string\). 
 
-	DateUpdated: Date and time the entity was updated, automatically updated \(DateTime\). 
+IsDeleted: Flag to signify that the item is deleted \(Bool\). 
 
-	Policies: List of policies applicable to this entity \(List&lt;Policy\). 
+IsPersisted: Flag to signify that the item is persisted \(Bool\). 
 
-	Components: List of components applicable to this entity \(List&lt;Component&gt;\). 
+DateDeleted: Date and time that the entity was deleted \(DateTime\). 
+```
 
-	ListMemberships: Delimited list of lists names \(string\). 
+Compositional extensibility: Compositional extensibility is a simple class supplied by plugins as a way of extending a commerce entity. Components can be added or removed by a plugin into a commerce entity by adding to the components property. This is usually done via a PipelineBlock or a RuleAction.
 
-	SortOrder: The order this item is sorted \(string\). 
-
-	IsDeleted: Flag to signify that the item is deleted \(Bool\). 
-
-	IsPersisted: Flag to signify that the item is persisted \(Bool\). 
-
-	DateDeleted: Date and time that the entity was deleted \(DateTime\). 
-
- 
-
-Compositional extensibility: Compositional extensibility is a simple class supplied by plugins as a way of extending a commerce entity. Components can be added or removed by a plugin into a commerce entity by adding to the components property. This is usually done via a PipelineBlock or a RuleAction. 
-
- 
-
-Managed Commerce List: A managed commerce list represents a core mechanism for organizing and relating commerce entities. Sitecore XC supports simplistic named lists as well as more tightly managed lists. Lists can be curated by selecting individual members of the list or implemented as expressions against the search provider for dynamic listing. 
-
-
-
-
+Managed Commerce List: A managed commerce list represents a core mechanism for organizing and relating commerce entities. Sitecore XC supports simplistic named lists as well as more tightly managed lists. Lists can be curated by selecting individual members of the list or implemented as expressions against the search provider for dynamic listing.
 
